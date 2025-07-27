@@ -3,10 +3,14 @@ name = "os"
 version = "0.1.0"
 edition = "2021"
 
-# [dependencies]
+[dependencies]
+bootloader = "0.9"
 
-[profile.dev]
-panic = "abort"
 
-[profile.release]
-panic = "abort"
+
+
+# [profile.dev]
+# panic = "abort"
+#
+# [profile.release]
+# panic = "abort"

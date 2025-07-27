@@ -1,0 +1,2 @@
+[bootimage]
+target = "x86_64-bootloader.json"
