@@ -26,6 +26,10 @@ test-args = [
 test-success-exit-code = 33
 test-timeout = 300
 
+[[test]]
+name = "stack_overflow"
+harness = false
+
 # [profile.dev]
 # panic = "abort"
 #
