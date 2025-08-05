@@ -11,7 +11,9 @@ use core::panic::PanicInfo;
 #[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
+    os::serial_println!("[failed]\n");
+    os::serial_println!("Error: {}\n", info);
+    os::exit_qemu(os::QemuExitCode::Failed);
     loop {}
 }
 
@@ -25,9 +27,15 @@ fn panic(info: &PanicInfo) -> ! {
 pub extern "C" fn _start() -> ! {
     write_something();
 
+    os::init();
+
+    // invoke the breakpoint instruction
+    // x86_64::instructions::interrupts::int3();
+
     #[cfg(test)]
     test_main();
 
+    println!("didn't crash");
     loop {} // Infinite loop to keep the program running
 }
 
